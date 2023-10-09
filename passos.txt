@@ -1,0 +1,49 @@
+/* Configuração do Git */
+git config --global user.name GalloJunior
+git config --global user.email gallojunior@gmail.com
+git clone https://github.com/gallojunior/mtec-devsA.git
+
+cd MtecDevs
+dotnet restore
+
+/* Criar a solução e o projeto */
+dotnet new sln --name MtecDevs
+dotnet new mvc -o MtecDevs -f net6.0
+dotnet sln add MtecDevs\MtecDevs.csproj
+
+/* Instalação dos Pacotes */
+dotnet add package Microsoft.EntityFrameworkCore --version 6.0.21
+dotnet add package Microsoft.EntityFrameworkCore.Design --version 6.0.21
+dotnet add package Pomelo.EntityFrameworkCore.MySql --version 6.0.2
+dotnet add package Microsoft.AspNetCore.Identity.EntityFrameworkCore --version 6.0.21
+
+/* Salvar tudo no GitHub */
+Estar na pasta do repositório
+git add .
+git commit -m "Criado a solução e o projeto"
+git push
+
+
+/* Dados */
+Usuários  - Devs/Admin/Prof
+    Dados básicos: Nome, Data nascimento, Foto, TipoDev
+TipoDev - Front/Back/Full/UX-UI/Design/
+
+/* Criação da classe de Contexto na pasta Data */
+AppDbContext
+
+/* Criar a string de conexão */
+appsettings.json
+
+Adicionou os serviços de DbContext e Identity ao program
+
+Criar a migração
+// Testar se tem a ferramenta de migração
+dotnet ef
+
+// Instala no PC
+dotnet tool install --global dotnet-ef
+
+// Comandos para criar e aplicar as migrações
+dotnet ef migrations add criar-banco
+dotnet ef database update

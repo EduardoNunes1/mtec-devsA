@@ -11,7 +11,7 @@ using MtecDevs.Data;
 namespace MtecDevs.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230925121149_criar-banco")]
+    [Migration("20231009120117_criar-banco")]
     partial class criarbanco
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

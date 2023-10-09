@@ -7,7 +7,7 @@ namespace MtecDevs.Data;
 public class AppDbContext : IdentityDbContext
 {
     public AppDbContext(DbContextOptions opcoes) : base(opcoes)
-    {  
+    {
     }
 
     public DbSet<Usuario> Usuarios { get; set; }
@@ -17,4 +17,5 @@ public class AppDbContext : IdentityDbContext
     {
         base.OnModelCreating(builder);
     }
+
 }
