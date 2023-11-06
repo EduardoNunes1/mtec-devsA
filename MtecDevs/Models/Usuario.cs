@@ -12,7 +12,7 @@ public class Usuario
     public IdentityUser AccountUser { get; set; }
 
     [Required(ErrorMessage = "Informe o Nome")]
-    [StringLength(60, ErrorMessage = "O Nome deve possuir no máximo 30 caracteres")]
+    [StringLength(60, ErrorMessage = "O Nome deve possuir no máximo 60 caracteres")]
     public string Nome { get; set; }
 
     [DataType(DataType.Date)]

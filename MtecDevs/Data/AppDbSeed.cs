@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MtecDevs.Models;
@@ -8,25 +9,25 @@ public class AppDbSeed
 {
     public AppDbSeed(ModelBuilder builder)
     {
-        #region Popular dos dados do TipoDev
-        List<TipoDev> tipoDevs = new(){
-            new TipoDev(){
+        #region Popular dados TipoDev
+        List<TipoDev> tipoDevs = new() {
+            new TipoDev() {
                 Id = 1,
                 Nome = "FullStack"
             },
-            new TipoDev(){
+            new TipoDev() {
                 Id = 2,
                 Nome = "FrontEnd"
             },
-            new TipoDev(){
+            new TipoDev() {
                 Id = 3,
                 Nome = "BackEnd"
             },
-            new TipoDev(){
+            new TipoDev() {
                 Id = 4,
                 Nome = "Design"
             },
-            new TipoDev(){
+            new TipoDev() {
                 Id = 5,
                 Nome = "Jogos"
             }
@@ -34,71 +35,68 @@ public class AppDbSeed
         builder.Entity<TipoDev>().HasData(tipoDevs);
         #endregion
 
-        #region Popular dos dados Perfis de Usuário
-        List<IdentityRole> roles = new(){
-            new IdentityRole(){
+        #region Popular dados Perfis de Usuário
+        List<IdentityRole> perfis = new() {
+            new IdentityRole() {
                 Id = Guid.NewGuid().ToString(),
                 Name = "Administrador",
                 NormalizedName = "ADMINISTRADOR"
             },
-            new IdentityRole(){
+            new IdentityRole() {
                 Id = Guid.NewGuid().ToString(),
                 Name = "Moderador",
                 NormalizedName = "MODERADOR"
             },
-            new IdentityRole(){
+            new IdentityRole() {
                 Id = Guid.NewGuid().ToString(),
                 Name = "Usuário",
                 NormalizedName = "USUÁRIO"
             }
         };
-        builder.Entity<IdentityRole>().HasData(roles);
+        builder.Entity<IdentityRole>().HasData(perfis);
         #endregion
 
-        #region Popular dos dados Usuários
-        // Cria a lista de contas
-        List<IdentityUser> users = new(){
-            new IdentityUser(){
+        #region Popular Dados de Usuário
+        // Lista de IdentityUser
+        List<IdentityUser> users = new() {
+            new IdentityUser() {
                 Id = Guid.NewGuid().ToString(),
-                Email = "rafael.roberto200618@gmail.com",
-                NormalizedEmail = "RAFAEL.ROBERTO200618@GMAIL.COM",
-                UserName = "Rafalol",
-                NormalizedUserName = "RAFALOL",
-                LockoutEnabled = false,
-                PhoneNumber = "14998180806",
-                PhoneNumberConfirmed = true,
-                EmailConfirmed = true
+                UserName = "GalloJunior",
+                NormalizedUserName = "GALLOJUNIOR",
+                Email = "gallojunior@gmail.com",
+                NormalizedEmail = "GALLOJUNIOR@GMAIL.COM",
+                EmailConfirmed = true,
+                LockoutEnabled = true
             }
         };
-        // Criptografar as senhas
-        foreach (var user in users){
-            PasswordHasher<IdentityUser> pass = new();
-            user.PasswordHash = pass.HashPassword(user, "@Etec123");
+        // Criptografar a senha do IdentityUser
+        foreach (var user in users)
+        {
+            PasswordHasher<IdentityUser> password = new();
+            user.PasswordHash = password.HashPassword(user, "@Etec123");
         }
-        // Adiciona a conta no banco
         builder.Entity<IdentityUser>().HasData(users);
-
-        // Cria a conta pessoal do usuário
+        
+        // Cria o usuário
         List<Usuario> usuarios = new(){
-            new Usuario(){
+            new Usuario() {
                 UserId = users[0].Id,
-                Nome = "Nuller",
-                DataNascimento = DateTime.Parse("14/06/2006"),
-                TipoDevId = 2,
-                Foto = "/img/usuarios/avatar.png"
+                Nome = "José Antonio Gallo Junior",
+                DataNascimento = DateTime.Parse("05/08/1981"),
+                Foto = "/img/usuarios/avatar.png",
+                TipoDevId = 1
             }
         };
         builder.Entity<Usuario>().HasData(usuarios);
 
-        // Associar o usuário ao tipo de perfil
-        List<IdentityUserRole<string>> userRoles = new(){
-            new IdentityUserRole<string>(){
+        // Definir o perfil do usuário criado
+        List<IdentityUserRole<string>> userRoles = new() {
+            new IdentityUserRole<string>() {
                 UserId = users[0].Id,
-                RoleId = roles[0].Id
+                RoleId = perfis[0].Id
             }
         };
         builder.Entity<IdentityUserRole<string>>().HasData(userRoles);
-
         #endregion
     }
 }

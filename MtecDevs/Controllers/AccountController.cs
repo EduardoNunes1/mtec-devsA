@@ -2,10 +2,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MtecDevs.Controllers;
 
-[Route("[controller]")]
 public class AccountController : Controller
 {
     private readonly ILogger<AccountController> _logger;
+
     public AccountController(ILogger<AccountController> logger)
     {
         _logger = logger;
@@ -16,6 +16,7 @@ public class AccountController : Controller
     {
         return View();
     }
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
