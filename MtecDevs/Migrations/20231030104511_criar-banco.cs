@@ -209,7 +209,7 @@ namespace MtecDevs.Migrations
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Usuarios",
+                name: "Usuario",
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "varchar(255)", nullable: false)
@@ -223,21 +223,58 @@ namespace MtecDevs.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Usuarios", x => x.UserId);
+                    table.PrimaryKey("PK_Usuario", x => x.UserId);
                     table.ForeignKey(
-                        name: "FK_Usuarios_AspNetUsers_UserId",
+                        name: "FK_Usuario_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Usuarios_TipoDev_TipoDevId",
+                        name: "FK_Usuario_TipoDev_TipoDevId",
                         column: x => x.TipoDevId,
                         principalTable: "TipoDev",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.InsertData(
+                table: "AspNetRoles",
+                columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
+                values: new object[,]
+                {
+                    { "27570ef6-ab7f-41d2-89e7-b7550da3ee05", "2bf1e89b-0dd6-40a9-9064-2c9484a27799", "Moderador", "MODERADOR" },
+                    { "4a129659-78f3-4247-9a3f-f6158311e886", "5ac90406-e115-49d4-a0ed-15a3c1ce5e0d", "Administrador", "ADMINISTRADOR" },
+                    { "8fe1f8cd-9765-41b7-9d88-293536233f4d", "fa57c86d-3e06-457e-a5f9-a947b2a42378", "Usuário", "USUÁRIO" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUsers",
+                columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
+                values: new object[] { "a37bbf0d-03d1-47ad-983f-2cd22f534a4c", 0, "f613844e-13c5-4402-962c-bd873138ac4f", "gallojunior@gmail.com", true, false, null, "GALLOJUNIOR@GMAIL.COM", "GALLOJUNIOR", "AQAAAAEAACcQAAAAEPBxEdXfsh9Rc5chaqwl/2xg/wMnDzQBFKY3OM/VUvzpbAKOkiMk2WgpH+2y556wmw==", "14912345678", true, "320bf67e-35ca-49f0-ac02-1c2eac9c1514", false, "GalloJunior" });
+
+            migrationBuilder.InsertData(
+                table: "TipoDev",
+                columns: new[] { "Id", "Nome" },
+                values: new object[,]
+                {
+                    { (byte)1, "FullStack" },
+                    { (byte)2, "FrontEnd" },
+                    { (byte)3, "BackEnd" },
+                    { (byte)4, "Design" },
+                    { (byte)5, "Jogos" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "AspNetUserRoles",
+                columns: new[] { "RoleId", "UserId" },
+                values: new object[] { "4a129659-78f3-4247-9a3f-f6158311e886", "a37bbf0d-03d1-47ad-983f-2cd22f534a4c" });
+
+            migrationBuilder.InsertData(
+                table: "Usuario",
+                columns: new[] { "UserId", "DataNascimento", "Foto", "Nome", "TipoDevId" },
+                values: new object[] { "a37bbf0d-03d1-47ad-983f-2cd22f534a4c", new DateTime(1981, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified), "/img/usuarios/avatar.png", "José Antonio Gallo Junior", (byte)1 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -277,8 +314,8 @@ namespace MtecDevs.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Usuarios_TipoDevId",
-                table: "Usuarios",
+                name: "IX_Usuario_TipoDevId",
+                table: "Usuario",
                 column: "TipoDevId");
         }
 
@@ -300,7 +337,7 @@ namespace MtecDevs.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Usuarios");
+                name: "Usuario");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

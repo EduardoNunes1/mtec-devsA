@@ -30,5 +30,13 @@ form {
 .separator .line {
     flex: 1;
     height: 1px;
-    background-color: var(--bs-body-color);
+    background-color:  var(--bs-body-color);
+}
+
+.swal2-popup{
+    background: var(--bs-body-bg) !important;
+}
+
+.swal2-title, .swal2-html-container{
+    color: var(--bs-body-color) !important;
 }

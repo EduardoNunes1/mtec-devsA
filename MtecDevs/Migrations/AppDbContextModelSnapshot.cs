@@ -47,22 +47,22 @@ namespace MtecDevs.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "92d4272f-428f-4ccc-8f63-28a6f87294b4",
-                            ConcurrencyStamp = "667a715c-dbee-4a4d-aa9b-9c3e5628d69a",
+                            Id = "4a129659-78f3-4247-9a3f-f6158311e886",
+                            ConcurrencyStamp = "5ac90406-e115-49d4-a0ed-15a3c1ce5e0d",
                             Name = "Administrador",
                             NormalizedName = "ADMINISTRADOR"
                         },
                         new
                         {
-                            Id = "02759feb-28c1-4194-8a1a-2433300a6aeb",
-                            ConcurrencyStamp = "ab039053-b2f5-4769-b53a-435c9ebd5e8a",
+                            Id = "27570ef6-ab7f-41d2-89e7-b7550da3ee05",
+                            ConcurrencyStamp = "2bf1e89b-0dd6-40a9-9064-2c9484a27799",
                             Name = "Moderador",
                             NormalizedName = "MODERADOR"
                         },
                         new
                         {
-                            Id = "cda070bb-f626-4e79-84c9-25c4cd13ff56",
-                            ConcurrencyStamp = "bbd97ff9-936f-4743-ab8f-cce67b0fa791",
+                            Id = "8fe1f8cd-9765-41b7-9d88-293536233f4d",
+                            ConcurrencyStamp = "fa57c86d-3e06-457e-a5f9-a947b2a42378",
                             Name = "Usuário",
                             NormalizedName = "USUÁRIO"
                         });
@@ -157,17 +157,18 @@ namespace MtecDevs.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "429579c2-979f-4d48-9de5-65f7f8db300d",
+                            Id = "a37bbf0d-03d1-47ad-983f-2cd22f534a4c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6b5b1b1e-27a1-431b-a6ed-8067570d287a",
+                            ConcurrencyStamp = "f613844e-13c5-4402-962c-bd873138ac4f",
                             Email = "gallojunior@gmail.com",
                             EmailConfirmed = true,
-                            LockoutEnabled = true,
+                            LockoutEnabled = false,
                             NormalizedEmail = "GALLOJUNIOR@GMAIL.COM",
                             NormalizedUserName = "GALLOJUNIOR",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPzKVZDniUQ8pVNZI1/l/45M3QghlrnIK5hGJUHngqETpZafe2c1tLGlcBEyoBnANg==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "6e025b58-197c-4ba8-83fc-47bfa1979304",
+                            PasswordHash = "AQAAAAEAACcQAAAAEPBxEdXfsh9Rc5chaqwl/2xg/wMnDzQBFKY3OM/VUvzpbAKOkiMk2WgpH+2y556wmw==",
+                            PhoneNumber = "14912345678",
+                            PhoneNumberConfirmed = true,
+                            SecurityStamp = "320bf67e-35ca-49f0-ac02-1c2eac9c1514",
                             TwoFactorEnabled = false,
                             UserName = "GalloJunior"
                         });
@@ -235,8 +236,8 @@ namespace MtecDevs.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "429579c2-979f-4d48-9de5-65f7f8db300d",
-                            RoleId = "92d4272f-428f-4ccc-8f63-28a6f87294b4"
+                            UserId = "a37bbf0d-03d1-47ad-983f-2cd22f534a4c",
+                            RoleId = "4a129659-78f3-4247-9a3f-f6158311e886"
                         });
                 });
 
@@ -325,12 +326,12 @@ namespace MtecDevs.Migrations
 
                     b.HasIndex("TipoDevId");
 
-                    b.ToTable("Usuarios");
+                    b.ToTable("Usuario");
 
                     b.HasData(
                         new
                         {
-                            UserId = "429579c2-979f-4d48-9de5-65f7f8db300d",
+                            UserId = "a37bbf0d-03d1-47ad-983f-2cd22f534a4c",
                             DataNascimento = new DateTime(1981, 8, 5, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Foto = "/img/usuarios/avatar.png",
                             Nome = "José Antonio Gallo Junior",
