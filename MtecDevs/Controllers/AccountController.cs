@@ -31,6 +31,12 @@ public class AccountController : Controller
         return View(login);
     }
 
+    [HttpGet]
+        public IActionResult Register()
+    {
+        return View();
+    }
+    
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Login(LoginVM login)

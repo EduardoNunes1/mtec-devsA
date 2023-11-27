@@ -1,0 +1,62 @@
+@model MtecDevs.ViewModels.RegisterVM
+@{
+    ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_LayoutAccount.cshtml";
+}
+
+<main class="container-fluid p-4">
+    <form method="post" asp-action="Login" asp-controller="Account">
+        <div class="text-center mb-4">
+            <img src="~/img/logo2.png" alt="Logo" width="350">
+        </div>
+
+        <div class="text-center mb-2">
+            <img asp-for="Foto" src="~/img/usuarios/avatar.png" alt="Foto de Perfil" width="120">
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Nome" class="form-label"></label>
+            <input asp-for="Nome" class="form-control">
+            <span asp-validation-for="Nome" class="text-danger"></span>
+        </div>
+        
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label"></label>
+            <input asp-for="Email" class="form-control">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="DataNascimento" class="form-label"></label>
+            <input asp-for="DataNascimento" class="form-control">
+            <span asp-validation-for="DataNascimento" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Senha" class="form-label"></label>
+            <input asp-for="Senha" class="form-control">
+            <span asp-validation-for="Senha" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <legend asp-for="TipoDevId"></legend>
+            <select>
+                <option>Full-Stack</option>
+                <option>Back-end</option>
+                <option>Front-end</option>
+            </select>
+            <span asp-validation-for="TipoDevId" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="w-100 btn btn-primary">Criar conta</button>
+
+        <div class="separator">
+            <div class="line"></div>
+            <h6>Já possui uma conta?</h6>
+            <div class="line"></div>
+        </div>
+
+        <a asp-action="Login" class="w-100 btn btn-success mt-1">Faça login</a>
+
+    </form>
+</main>
